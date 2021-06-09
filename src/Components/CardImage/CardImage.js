@@ -4,10 +4,10 @@ const CardImage = (props) => {
     const{id, webformatURL, views, likes, downloads, user} = props.image
     const tags = props.image.tags.split(',')
     return (
-        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+        <div class="max-w-sm rounded-3xl overflow-hidden shadow-2xl border-double border-4 border-light-green-500">
             <img src={webformatURL} alt="" className="w-full"/>
             <div className="px-6 py-4">
-                <div className="font-bold text-green-400 text-xl mb-2">
+                <div className="font-bold text-green-400 text-xl mb-2 text-left">
                     Photo By {user}
                 </div>
                 <ul className="text-left">
@@ -25,8 +25,8 @@ const CardImage = (props) => {
                     </li>
                 </ul>
             </div>
-            <div className="tag-list px-6 py-4">
-                { tags.map( tag => <span key={id} className="inline-block bg-green-400 rounded-full px-3 py-1
+            <div className="tag-list px-6 py-4 text-left">
+                { tags.map( tag => <span key={id} className="inline-block mb-2 bg-green-400 rounded-full px-3 py-1
                  text-sm font-semibold text-white mr-2 ">{tag}</span>)
                 
                  }

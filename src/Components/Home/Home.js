@@ -22,14 +22,19 @@ const Home = () => {
         fetchingImages(searchImage)
     }, [searchImage])
     return (
-        <div className="container mx-auto px-6 shadow-lg mb-5">
+        <div className="container mx-auto px-6 pb-5 shadow-lg mb-5">
             <Navigation></Navigation>
             <SearchImage searchTitle={(title) => setSearchImage(title)}></SearchImage>
-            <div className="grid grid-cols-3 gap-4">
-                {
-                    images.map(image => <CardImage key={image.id} image={image}></CardImage>)
-                }
-            </div>
+            {
+                !isLoading && images.length === 0 && <h1 className="text-xl text-green-400">Sorry no image found regarding the search keyword</h1>
+            }
+            {isLoading ? <h1 className="text-xl text-green-400">Loading....</h1> : <div className="flex justify-center">
+                <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 xs:grid-col-1 gap-4">
+                    {
+                        images.map(image => <CardImage key={image.id} image={image}></CardImage>)
+                    }
+                </div>
+            </div>}
         </div >
     );
 };
